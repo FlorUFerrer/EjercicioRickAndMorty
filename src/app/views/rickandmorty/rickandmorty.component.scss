@@ -1,0 +1,10 @@
+.container{
+   display: flex;
+   flex-direction: row;
+   gap:20px;
+
+  .list{
+    padding: 10px;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+}

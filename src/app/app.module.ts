@@ -1,18 +1,26 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { APIrickandmortyService } from './services/apirickandmorty.service';
+import { RickandmortyComponent } from './views/rickandmorty/rickandmorty.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RickandmortyComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    APIrickandmortyService ,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
