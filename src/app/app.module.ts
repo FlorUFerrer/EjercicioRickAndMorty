@@ -6,11 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APIrickandmortyService } from './services/apirickandmorty.service';
 import { RickandmortyComponent } from './views/rickandmorty/rickandmorty.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     RickandmortyComponent,
+    SearchPipe,
+ 
   ],
   imports: [
     BrowserModule,

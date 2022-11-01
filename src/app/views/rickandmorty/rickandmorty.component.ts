@@ -38,9 +38,7 @@ episodio$! : Observable<any>;
     .pipe(
       take(10),
       map((x :any) =>{
-        //return console.log(x.results);
-
-        return x.results;
+         return x.results;
       })
     )
     }
