@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { first, map, Observable, Subscription, take } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { debounceTime, first, map, Observable, Subscription, take } from 'rxjs';
 import { APIrickandmortyService } from 'src/app/services/apirickandmorty.service';
-import { RickMorty } from 'src/app/services/rickandmorty.model';
+
 
 @Component({
   selector: 'app-rickandmorty',
@@ -15,6 +16,9 @@ characterService: Subscription;
 characterservice$! : Observable<any>;
 
 episodio$! : Observable<any>;
+search = new FormControl('')
+filterCharacter = '';
+
 
   // - Consultar la API usando servicios
   constructor( public service : APIrickandmortyService) {
@@ -43,24 +47,28 @@ episodio$! : Observable<any>;
     )
     }
 
+    //- Crear un input para filtrar personajes por nombre usando observables
+    filter( value: string){
+      this.filterCharacter = value
+    }
+
+
+    ngOnInit(): void {
+
+        this.search.valueChanges
+        .pipe(
+          debounceTime(300)
+          )
+          .subscribe(name => this.filter(name)
+
+          )
+        }
 
     ngOnDestroy(){
         this.characterService.unsubscribe();
-    }
 
-   ngOnInit(): void {
-
-
-
-
-
-
-
-
-
-  }
-
+      }
 
 
 }
-// - Crear un input para filtrar personajes usando observables
+

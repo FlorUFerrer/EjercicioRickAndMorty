@@ -1,23 +1,21 @@
 <div class="container">
-    <div>
-      <p>Search:</p>
-      <input type="text" name="" id="">
+  <div class="wrap">
+    <div class="search">
+      <input [formControl]="search" placeholder="Search character...">
     </div>
-
-    <div class="list">
-      <h1>Lista de personajes</h1>
-      <div *ngFor = " let item of  characters">
-        <p>{{item.name}}</p>
-      </div>
+  </div>
+  <div class="list">
+    <h1>Lista de personajes</h1>
+    <div *ngFor = " let item of  characters | search:filterCharacter">
+      <p>{{item.name}}</p>
     </div>
-
+  </div>
   <div class="list">
     <h1>Lista de ubicaciones</h1>
     <div *ngFor = " let item of  characterservice$ |async as location ">
       <p>{{item.location.name}}</p>
     </div>
   </div>
-
   <div class="list">
     <h1>Lista de personaje (episodios)</h1>
      <div *ngFor = " let item of  episodio$ |async as location ; let i = index">
