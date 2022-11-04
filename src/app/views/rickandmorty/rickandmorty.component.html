@@ -12,8 +12,8 @@
   </div>
   <div class="list">
     <h1>Lista de ubicaciones</h1>
-    <div *ngFor = " let item of  characterservice$ |async as location ">
-      <p>{{item.location.name}}</p>
+    <div *ngFor = " let item of  locationservice$ |async as location ">
+      <p>{{item}}</p>
     </div>
   </div>
   <div class="list">

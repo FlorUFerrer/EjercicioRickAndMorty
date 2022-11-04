@@ -13,7 +13,7 @@ export class RickandmortyComponent implements OnInit {
 
 characters :any = []
 characterService: Subscription;
-characterservice$! : Observable<any>;
+locationservice$! : Observable<any>;
 
 episodio$! : Observable<any>;
 search = new FormControl('')
@@ -31,18 +31,26 @@ filterCharacter = '';
 
       )
     // - Listar las ubicaciones usando observables y async
-      this.characterservice$ = this.service.getCharacters()
+      this.locationservice$ = this.service.getLocations()
       .pipe(
         map((x :any) =>{
-          return x.results;
+         let locations = x.results.map((data:any)=>{
+            return data.name
+          })
+
+        return locations
+
         })
       )
+
     // - Listar los personajes a partir de los episodios usando observables, operadores y async, limite 10 episodios
-    this.episodio$ = this.service.getCharacters()
+    this.episodio$ = this.service.getEpisodes()
     .pipe(
       take(10),
       map((x :any) =>{
-         return x.results;
+        console.log(x.results);
+
+         //return x.results;
       })
     )
     }
